@@ -1,0 +1,4 @@
+LAN - 192.168.25.1
+
+WIRELESS-SSID-HomeGateway
+-mySecretKey
