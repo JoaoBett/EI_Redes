@@ -1,0 +1,21 @@
+### CONFIG ROUTER ###
+enable - modo Privilegiado
+
+clock set - colcoar a data e hora
+
+show history - mostrar o comandos utilizados
+
+? - que comandos sao possiveis
+
+hostname - mudar o hostname do router
+
+banner motd - mensagem de arranque personalizada
+
+show running-config - mostrar a config atual
+
+show startup-config - 
+
+pasword - dar set numa password
+
+copy run start - guarda a config atual
+
