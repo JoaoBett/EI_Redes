@@ -42,7 +42,7 @@ ip address IP Máscara - para configurar o ip da maquina e a sua mascara
 no shutdown - faz com que a interface nao se desligue
 
 
-Acesso remoto por SSH
+### Acesso remoto por SSH ###
 
 line vty 0 15 - para ir para a config line dentro do intervalo desejado
 
@@ -53,3 +53,100 @@ ip domain-name "123" - define o dominio do dispositivo
 crypto ke generate rsa - gera a chave RSA que sera usada no processo de autenticaçao
 
 username cisco password class - cria um utilizador com login cisco e password class
+
+
+
+
+###############################
+####\  Configurar switch  /####
+###############################
+
+--(para configurar pass cisco)
+~CLI
+enable
+conf t
+line con 0
+password cisco
+login
+exit
+logout
+
+"password"
+
+
+--(para configurar pass class)
+enable
+conf t
+enable secret class
+exit
+logout
+
+--(configuratr gateway)
+enable
+conf t
+ip default-gateway 10.0.1.255
+
+
+--(configurar switch)
+interface vlan 1
+no shutdown
+ip address 10.0.1.21 255.255.255.0
+
+
+--(verificar)
+sh ip interface brief
+
+
+para sair quando se engana
+(ctrl shift 6)
+
+
+
+--(configurar terminal remoto)
+conf t
+line ?
+line vty 0
+line vty 1
+line vty 0 15
+password cisco
+login
+ctrl+z
+
+--(para testar)
+ping 10.0.1.21 (tem que dar sucesso)
+telnet 10.0.1.21
+enable
+logout
+
+(ir ao command prompt de um pc)
+ping 10.0.1.21
+telnet 10.0.1.21
+(colocar a pass)
+enable
+(da sucesso)
+logout
+
+
+
+### CONFIGURAR SSH  ###
+
+enable
+conf t
+line vty 0 15
+transport input ssh
+transport input telnet
+login local (indica que os utilizadores estao configurados na switch)
+exit
+
+(configurar dominio)
+ip domain-name redes.pt
+
+(gerar chave RSA)
+hostname SW1
+crypto key generate rsa
+username cisco password class
+ctrl+z
+
+ping 10.0.1.21
+telnet 10.0.1.21
+ssh -l cisco 10.0.1.21
