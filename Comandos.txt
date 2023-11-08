@@ -19,3 +19,37 @@ pasword - dar set numa password
 
 copy run start - guarda a config atual
 
+reload - dar restart ao dispositivo
+
+
+### PC Commands ###
+
+arp - Address Resolution Protocol
+
+arp -a - mostra o data protocol atual do pc
+
+arp -d - elimina o data protocol atual do pc
+
+
+### Switch Config ###
+
+Switch(config)#ip default-gateway IP - configurar o gateway do switch
+
+interface vlan 1 - configurar a interface virtual no switch
+
+ip address IP Máscara - para configurar o ip da maquina e a sua mascara
+
+no shutdown - faz com que a interface nao se desligue
+
+
+Acesso remoto por SSH
+
+line vty 0 15 - para ir para a config line dentro do intervalo desejado
+
+login local - força a que a base de dados de gestao de utilizadores seja local
+
+ip domain-name "123" - define o dominio do dispositivo
+
+crypto ke generate rsa - gera a chave RSA que sera usada no processo de autenticaçao
+
+username cisco password class - cria um utilizador com login cisco e password class
